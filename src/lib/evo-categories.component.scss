@@ -1,0 +1,222 @@
+$ACTIVE_COLOR: #ce903c;
+$fontFamily: "Kanit", sans-serif;
+$categoryColor: #116db7;
+
+$PROGRESSBARCOLOR: $categoryColor;
+
+@keyframes ft-category-loader-progress {
+  0% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+div[_ngcategory-progress] {
+  width: 50%;
+  height: 5px;
+  transform: translateX(-200%);
+  background-image: linear-gradient(
+    90deg,
+    $PROGRESSBARCOLOR,
+    $PROGRESSBARCOLOR 90%,
+    #fafeff 95%
+  );
+  z-index: 2;
+  -webkit-animation: ft-category-loader-progress 2s
+    cubic-bezier(0, 0.85, 0.6, 0.6) infinite;
+  -khtml-animation: ft-category-loader-progress 2s
+    cubic-bezier(0, 0.85, 0.6, 0.6) infinite;
+  -moz-animation: ft-category-loader-progress 2s cubic-bezier(0, 0.85, 0.6, 0.6)
+    infinite;
+  -ms-animation: ft-category-loader-progress 2s cubic-bezier(0, 0.85, 0.6, 0.6)
+    infinite;
+  -o-animation: ft-category-loader-progress 2s cubic-bezier(0, 0.85, 0.6, 0.6)
+    infinite;
+  animation: ft-category-loader-progress 2s cubic-bezier(0, 0.85, 0.6, 0.6)
+    infinite;
+}
+
+.ft-category {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+  padding-top: 10px;
+
+  .ft-category-category-not-selectable:hover {
+    cursor: initial !important;
+  }
+
+  &-title {
+    text-align: left;
+    font: 600 13px/20px $fontFamily;
+    letter-spacing: 0;
+    //color: black;
+    color: #404040;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+
+  &-description {
+    margin: 0 0 10px 0;
+    font: inherit;
+    font-size: 100%;
+  }
+
+  &-button {
+    width: 100%;
+    margin: 0;
+    padding: 4px 0;
+    font-weight: 400;
+    background: transparent;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+
+      .ft-category-button-progress-bar {
+        opacity: 0.6;
+        -webkit-transition: background 0.2s ease, opacity 0.5s ease;
+        transition: background 0.2s ease, opacity 0.5s ease;
+        border-radius: 2px;
+      }
+    }
+
+    &-header {
+      display: flex;
+      margin: 0;
+      //margin: 0 0 4px;
+
+      &-title {
+        flex: 1;
+        line-height: 16px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: left;
+        font: 13px/20px $fontFamily;
+        letter-spacing: 0;
+        color: #404040;
+        opacity: 1;
+      }
+
+      &-count {
+        text-align: right;
+        font: 300 13px/20px $fontFamily;
+        letter-spacing: 0;
+        color: #404040;
+        opacity: 1;
+      }
+    }
+
+    &-progress-bar {
+      min-width: 1%;
+      max-width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background-color: $PROGRESSBARCOLOR;
+
+      -webkit-transition: width 2000ms ease;
+      -moz-transition: width 2000ms ease;
+      -o-transition: width 2000ms ease;
+      transition: width 2000ms ease;
+    }
+
+    &-progress-bar-other {
+      min-width: 1%;
+      max-width: 100%;
+      height: 4px;
+      border-radius: 4px;
+      background-color: #747474;
+      transition: width 2s;
+    }
+  }
+
+  &-ul {
+    margin: 0;
+    padding: 0 5px 0 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &-li {
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+
+  &-selection-mode {
+    button[data-selected="true"] {
+      opacity: 1;
+
+      .ft-category-button-progress-bar {
+        background: #032d4e;
+        //background: #00731e;
+      }
+
+      &:hover {
+        .ft-category-button-progress-bar {
+          opacity: 1;
+        }
+      }
+    }
+
+    button {
+      opacity: 0.5;
+    }
+  }
+
+  &-clear-section {
+    margin-bottom: 5px;
+
+    &-text {
+      min-width: 70px;
+      text-align: left;
+      font: 300 10px/20px $fontFamily;
+      letter-spacing: 0;
+      color: #7b7c7b;
+      text-transform: uppercase;
+      opacity: 1;
+    }
+
+    &-button {
+      margin-left: 8px;
+      border: none;
+      padding: 0;
+      text-align: left;
+      background: transparent;
+      cursor: pointer;
+      color: $PROGRESSBARCOLOR;
+      font-size: 12px;
+      line-height: 17px;
+      font-weight: 300;
+      outline: none;
+      font-family: $fontFamily;
+      //font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    }
+  }
+
+  &-header-empty-message {
+    color: #fdb32b;
+    text-transform: uppercase;
+    font-family: $fontFamily;
+    //font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    font-weight: 500;
+  }
+
+  &-content-empty-message {
+    margin-top: 5px;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@adevolutio/category-count-filter",
+  "version": "0.0.1",
+  "author": "Victor Duarte",
+  "peerDependencies": {
+    "@angular/common": "^11.2.7",
+    "@angular/core": "^11.2.7"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+   "repository": {
+    "url": "git@github.com:adevolutio/category-count-filter.git"
+  },
+  "license": "ISC"
+}

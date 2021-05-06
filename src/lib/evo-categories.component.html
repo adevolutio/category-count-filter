@@ -1,0 +1,52 @@
+<div class="ft-category">
+  <div
+    *ngIf="loadingMask && isLoading"
+    _ngcategory-progress
+    className="ft-category-loading-mask"
+  ></div>
+  <h2 class="ft-category-title">{{ title }}</h2>
+
+  <ng-container>
+    <section class="ft-category-clear-section">
+      <span class="ft-category-clear-section-text">
+        {{ totalSelected > 0 ? totalSelected : "Todos" }} {{ " " }}
+        {{ totalSelected === 1 ? "selecionado" : "selecionados" }}
+      </span>
+
+      <button
+        *ngIf="totalSelected > 0"
+        class="ft-category-clear-section-button"
+        (click)="clearSelection()"
+      >
+        Limpar Filtros
+      </button>
+    </section>
+
+    <ul
+      [class]="
+        'ft-category-ul ' + (selectionMode ? 'ft-category-selection-mode' : '')
+      "
+    >
+      <li *ngFor="let item of sortedData$ | async" class="ft-category-li">
+        <button
+          (click)="onSelectedCategory(item)"
+          class="ft-category-button ft-category-category-selectable"
+          [attr.data-selected]="selectedCategories.has(item[valueField])"
+        >
+          <div class="ft-category-button-header">
+            <span class="ft-category-button-header-title">{{
+              item[displayField]
+            }}</span>
+            <span class="ft-category-button-header-count">{{
+              abbreviateNumber(item[countField])
+            }}</span>
+          </div>
+          <div
+            class="ft-category-button-progress-bar"
+            [ngStyle]="{ width: (item[countField] * 100) / maxValue + '%' }"
+          ></div>
+        </button>
+      </li>
+    </ul>
+  </ng-container>
+</div>
