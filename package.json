@@ -9,7 +9,7 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-   "repository": {
+  "repository": {
     "url": "git@github.com:adevolutio/category-count-filter.git"
   },
   "license": "ISC"
